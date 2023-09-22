@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;
+  }
+
+
+@font-face {
+  font-family: spirit;
+  src: url(../fonts/spirit/spiritbold.otf);
+
+
+}
+
+body {
+  background-image: url("../img/webbackgroundsmall.svg");
+  background-size: 200px;
+  background-attachment: fixed;
+  font-family: 'spirit', serif;
+  letter-spacing: 0.05em;
+  background-color:#271711;
+  text-transform: lowercase;
+  }
+
+  body, html{
+    width:100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+  transition: letter-spacing 0.3s;
+  }
+
+.navbar {
+  text-align: center;
+  padding:3em 0 3em 0;
+}
+
+
+.navbar li {
+  display: inline;
+  list-style-type:none;
+  font-size: 3em;
+  line-height: 2em;
+
+
+}
+
+.navbar li {
+padding: 0 1em 0 1em;
+
+}
+
+@media only screen and (max-width: 905px) {
+  .navbar li{display:block;}
+
+}
+
+
+
+
+
+h1{
+  color:#FFB0A1;
+  line-height: 1.2em;
+  font-size: 3em;
+  padding: 0 1em 0.75em 1em;
+}
+
+p{
+  color:#A1E7FF;
+  line-height: 1.5em;
+  font-size: 1.5em;
+  padding: 0 2em 1em 2em;
+
+}
+
+.logo{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+
+
+
+#brand {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transform: perspective(10px);
+  transition: transform 1s;
+
+}
+
+#brand:hover{
+  transform: rotatex(-2deg) scale(0.8);
+
+}
+
+#icon{
+  display:inline-block;
+  width: 1em;
+  transform: perspective(10px)scale(1.2);
+  transition: transform 0.4s;
+}
+
+#icon:hover{
+  transform: rotatex(-20deg)scale(1.7);
+}
+
+
+a.twitch:hover {color:#6441a5;letter-spacing: 0.2em;}
+a.youtube:hover {color:#a44141;letter-spacing: 0.2em;}
+a.twitter:hover {color:#4aaabb;letter-spacing: 0.2em;}
+a.tiktok:hover {color:#a44195;letter-spacing: 0.2em;}
+a.discord:hover {color:#4f41a4;letter-spacing: 0.2em;}
+a.music:hover {color:#FFB0A1;letter-spacing: 0.2em;}
+a.connect:hover {color:#A1E7FF;letter-spacing: 0.2em;}
+
+
+
+
+.content{
+  background-color: rgba(0, 0, 0, 0.3);
+  min-height: 100vh;
+}
