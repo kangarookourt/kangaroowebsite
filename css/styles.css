@@ -14,6 +14,14 @@
   src: url(../fonts/spirit/spiritbold.otf);
 }
 
+h1.title {
+  text-align: center;
+}
+
+p.desc {
+  text-align: center;
+}
+
 body {
   background-image: url("../img/webbackgroundsmall.svg");
   background-size: 200px;
@@ -22,9 +30,9 @@ body {
   letter-spacing: 0.05em;
   background-color:#271711;
   text-transform: lowercase;
-  }
+}
 
-  body, html{
+body, html{
     width:100%;
 }
 
@@ -33,9 +41,10 @@ a {
   color: inherit;
   transition: color 0.3s;
   transition: letter-spacing 0.3s;
-  }
+}
 
 .navbar {
+  color:#caa589;
   text-align: center;
   padding:3em 0 3em 0;
 }
@@ -77,4 +86,14 @@ p{
 
 }
 
+a.navbar {
+
+}
+
+
+a.home:hover {color:#ffffff;letter-spacing: 0.2em;}
+a.media:hover {color:#ffffff;letter-spacing: 0.2em;}
+a.shows:hover {color:#ffffff;letter-spacing: 0.2em;}
+a.about:hover {color:#ffffff;letter-spacing: 0.2em;}
+a.contact:hover {color:#ffffff;letter-spacing: 0.2em;}
 
