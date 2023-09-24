@@ -14,6 +14,15 @@
   src: url(../fonts/spirit/spiritbold.otf);
 }
 
+@font-face {
+  font-family: spiritthin;
+  src: url(../fonts/spirit/spiritthin.otf);
+}
+
+@font-face {
+  font-family: spiritverythin;
+  src: url(../fonts/spirit/spiritverythin.otf);
+}
 
 body {
   background-image: url("../img/webbackgroundsmall.svg");
@@ -78,6 +87,15 @@ p{
   padding: 0 2em 1em 2em;
 }
 
+p.bio {
+  color:#ffebdc;
+  line-height: 1.5em;
+  font-size: 1.25em;
+  padding: 0 2em 1em 2em;
+  margin: auto;
+  max-width: 700px;
+  font-family: spiritverythin;
+}
 
 h1.title {
   text-align: center;
