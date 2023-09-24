@@ -25,18 +25,29 @@
 }
 
 body {
-  background-image: url("../img/webbackgroundsmall.svg");
-  background-size: 200px;
-  background-attachment: fixed;
+
   font-family: 'spirit', serif;
   letter-spacing: 0.05em;
-  background-color:#271711;
+  background-color:#000000;
   text-transform: lowercase;
 }
 
 body, html{
     width:100%;
 }
+
+.bg
+{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: -1;
+
+}
+
 
 a {
   text-decoration: none;
