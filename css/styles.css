@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
-* {margin:0; padding:0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 
 
 @font-face {
@@ -28,23 +30,23 @@ body {
 
   font-family: 'spirit', serif;
   letter-spacing: 0.05em;
-  background-color:#000000;
+  background-color: #000000;
   text-transform: lowercase;
 }
 
-body, html{
-    width:100%;
+body,
+html {
+  width: 100%;
 }
 
-.bg
-{
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: -1;
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
 
 }
 
@@ -57,57 +59,59 @@ a {
 }
 
 .navbar {
-  color:#caa589;
+  color: #caa589;
   text-align: center;
-  padding:1em 0 1em 0;
+  padding: 1em 0 1em 0;
 }
 
 
 .navbar li {
   display: inline;
-  list-style-type:none;
+  list-style-type: none;
   font-size: 1.5em;
   line-height: 2em;
 }
 
 .navbar li {
-padding: 0 1em 0 1em;
+  padding: 0 1em 0 1em;
 }
 
 
 
 
 @media only screen and (max-width: 0px) {
-  .navbar li{display:block;}
+  .navbar li {
+    display: block;
+  }
 
 }
 
 
-h1{
-  color:#ffebdc;
+h1 {
+  color: #ffebdc;
   line-height: 1.2em;
   font-family: spiritbold;
   font-size: 3em;
   padding: 1em;
 }
 
-h2{
-  color:#ffebdc;
+h2 {
+  color: #ffebdc;
   line-height: 1.2em;
   font-family: spiritbold;
   font-size: 2em;
   padding: 1em;
 }
 
-p{
-  color:#ffebdc;
+p {
+  color: #ffebdc;
   line-height: 1.5em;
   font-size: 1.5em;
   padding: 0 2em 1em 2em;
 }
 
 p.bio {
-  color:#ffebdc;
+  color: #ffebdc;
   line-height: 1.5em;
   font-size: 1.25em;
   padding: 2em 2em 0em 2em;
@@ -115,13 +119,6 @@ p.bio {
   max-width: 700px;
   font-family: spiritverythin;
   background-color: #0000007b;
-}
-
-
-.bgdark {
-
-
-  background-color: #000000a1;
 }
 
 
@@ -140,18 +137,50 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  color:#caa589;
+  color: #caa589;
   background-color: #1c100c;
   text-align: center;
-  padding:1em 0 1em 0;
-  font-size: 1.5em;}
+  padding: 1em 0 1em 0;
+  font-size: 1.5em;
+}
 
 
-a.home:hover {color:#ffffff;letter-spacing: 0.2em;}
-a.media:hover {color:#ffffff;letter-spacing: 0.2em;}
-a.shows:hover {color:#ffffff;letter-spacing: 0.2em;}
-a.about:hover {color:#ffffff;letter-spacing: 0.2em;}
-a.contact:hover {color:#ffffff;letter-spacing: 0.2em;}
-a.merch:hover {color:#ffffff;letter-spacing: 0.2em;}
-h1.title:hover {color:#ffffff;letter-spacing: 0.2em;}
-footer:hover {color:#ffffff;letter-spacing: 0.2em;}
+a.home:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+a.media:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+a.shows:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+a.about:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+a.contact:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+a.merch:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+h1.title:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+
+footer:hover {
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
