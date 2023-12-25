@@ -92,8 +92,17 @@ h1 {
   line-height: 1.2em;
   font-family: spiritbold;
   font-size: 3em;
-  padding: 1em;
+  padding: 1em; 
 }
+
+h1.title {
+  font-size: 10vw;
+  letter-spacing: 0.1em;
+  margin: auto;
+  padding: 1em;
+
+}
+
 
 h2 {
   color: #ffebdc;
@@ -103,11 +112,22 @@ h2 {
   padding: 1em;
 }
 
+h3 {
+  font-size: 2em;
+  text-align: center;
+  margin: 1em;
+  margin-bottom: 0;
+  color: #ffebdc;
+
+}
+
+
 p {
   color: #ffebdc;
   line-height: 1.5em;
   font-size: 1.5em;
   padding: 0 2em 1em 2em;
+  text-align: center;
 }
 
 p.bio {
@@ -132,16 +152,22 @@ p.desc {
 }
 
 
+p.footer {
+  font-size: 1.25em;
+  text-align: center;
+  line-height: 1.5em;
+  padding: 2em;
+  max-width: 750px;
+  margin: auto;
+}
+
+
+
 footer {
-  position: fixed;
+  background-color: #000000dc;
   left: 0;
   bottom: 0;
-  width: 100%;
-  color: #caa589;
-  background-color: #1c100c;
-  text-align: center;
-  padding: 1em 0 1em 0;
-  font-size: 1.5em;
+
 }
 
 
@@ -177,10 +203,182 @@ a.merch:hover {
 
 h1.title:hover {
   color: #ffffff;
+  letter-spacing: 0.1em;
+}
+
+
+
+
+
+
+
+a.expandlink:hover {
+  color: #ffffff;
   letter-spacing: 0.2em;
 }
 
-footer:hover {
-  color: #ffffff;
-  letter-spacing: 0.2em;
+
+.sociallinks li {
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+  display: inline-flex;
+  list-style-type: none;
+  font-size: 1.25em;
+  padding: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  background-color: #000000ae;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin: 0.5em;
+  border: #ff8645;
+  border-width: 2px;
+  border-style: solid;
+
+
+}
+
+
+.specialborder1{
+  background: linear-gradient(to right, rgb(181, 88, 27), rgb(255, 194, 52));
+
+}
+
+
+
+
+.sociallinks a {
+  margin-left: 0;
+  margin-right: 0;
+
+
+}
+
+
+.sociallinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+
+@media screen and (max-width: 830px) {
+  .sociallinks li {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display: block;
+
+
+
+
+  }
+}
+
+
+@media screen and (max-width: 830px) {
+  .sociallinks {
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+
+  }
+
+}
+
+
+
+
+.sociallinks li:hover {
+  background-color: #000000c8;
+  transition: 0.5s;
+}
+
+.show {
+  background-color: #00000064;
+  max-width: 830px;
+  margin: auto;
+  margin-bottom: 25px;
+  padding: 8px;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 875px) {
+  .show {
+    background-color: #00000064;
+    max-width: calc(100% - 50px);
+
+  }
+}
+
+
+
+
+
+
+/* Basic styles for the image gallery */
+
+/* Container for the gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Individual gallery items */
+.gallery-item {
+  margin: 10px;
+  flex: 1 0 calc(50% - 20px);
+  /* Adjust this value for different column widths */
+  max-width: calc(100% - 20px);
+  /* Adjust this value for different column widths */
+  box-sizing: border-box;
+}
+
+
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Modal styles for fullscreen image view */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 80%;
+}
+
+.close {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
 }
