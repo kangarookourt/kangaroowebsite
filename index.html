@@ -1,136 +1,551 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Viewport settings for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kangaroo Kourt</title>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Title of the webpage that appears in the browser tab -->
+    <title>Kangaroo Kourt - Official Website</title>
     <style>
-        .bg {
-            background-image: url("img/background/bghome.jpg");
+        /* Define a custom font 'HMCamino' */
+        @font-face {
+            font-family: 'HMCamino';
+            src: url('fonts/HMCamino.ttf') format('truetype');
+        }
 
+        /* Basic styles for the body element */
+        body {
+            font-family: 'HMCamino', Arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            background: no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: black;
+            color: white;
+            transition: 200ms ease-out;
+        }
+
+        /* Styles for the header element */
+        header {
+            background-color: #00000000;
+            /* Transparent background */
+            color: white;
+            display: flex;
+            padding: 1em;
+        }
+
+        /* Styles for the main heading (h1) */
+        h1 {
+            text-align: right;
+            margin: auto;
+            margin-right: 1em;
+            margin-top: 0.33em;
+            font-size: 3em;
+        }
+
+        /* Styles for secondary headings (h2) */
+        h2 {
+            font-size: 3em;
+        }
+
+
+        p {
+            font-size: 1.4em;
+            line-height: 1.2em;
+        }
+
+
+        /* Styles for the navigation bar */
+        nav {
+            background-color: #00000000;
+            /* Transparent background */
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        /* Styles for the navigation list */
+        nav ul {
+            list-style-type: none;
+            /* Remove default list styling */
+            font-size: 2em;
+            padding: 0;
+            margin: 0;
+            display: inline;
+            flex-wrap: wrap;
+        }
+
+        /* Styles for each list item in the navigation */
+        nav ul li {
+            margin: 0.5em;
+        }
+
+        /* Styles for links in the navigation */
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+        }
+
+        /* Hover effect for navigation links */
+        nav ul li a:hover {
+            background-color: #00000000;
+            /* Transparent background */
+        }
+
+        /* Styles for the main content area */
+        main {
+            padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Styles for the footer */
+        footer {
+            background-color: #00000000;
+            /* Transparent background */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1em;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            /* Zoom effect on hover */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80%;
+            margin: auto;
+            display: block;
+        }
+
+        /* Styles for the close button in the modal */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Styles for navigation arrows in the modal */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+        }
+
+        .arrow-left {
+            left: 20px;
+            border-radius: 0;
+        }
+
+        .arrow-right {
+            right: 20px;
+            border-radius: 0;
+        }
+
+        /* Responsive design for screens smaller than 600px */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5em 0;
+            }
+
+            nav ul li a {
+                padding-left: 0;
+            }
+
+            h1 {
+                margin-right: 0;
+            }
+        }
+
+        /* Spacer for layout purposes */
+        .space {
+            height: 230px;
+        }
+
+        /* Styles for the background image */
+        .background-image {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            /* Place it behind all other content */
+        }
+
+        /* Ensure header, main content, and footer are above the background */
+        header,
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-buttons a {
+            text-decoration: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .merchbutton {
+            font-size: 2em;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            background-color: #000000;
+            border-radius: 0.5em;
+            padding: 0.6em 1em 0.5em 1em;
+            border-width: 0px;
+            border-color: rgb(0, 0, 0);
+            border-style: solid;
+        }
+
+        iframe.youtubevideo {
+            aspect-ratio: 16/9;
+            width: 100%;
+        }
+
+        a.email {
+            font-size: 1.4em;
+            text-decoration: none;
+            color: white;
         }
     </style>
 </head>
 
 <body>
+    <!-- Background image div -->
+    <div class="background-image" id="backgroundImage"></div>
 
-    <div class="bg"></div>
-    <div class="content">
-
-
-        <div class="navbar">
+    <!-- Header section containing navigation and main title -->
+    <header>
+        <nav>
             <ul>
-                <li><a class="home" href="index.html">Home</a></li>
-                <li><a class="media" href="media.html">Media</a></li>
-                <li><a class="shows" href="shows.html">Shows</a></li>
-                <li><a class="merch" href="https://kangarookourt.shop">Merch</a></li>
-                <li><a class="contact" href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-
-
-        <h1 class="title">Kangaroo Kourt</h1>
-
-        <br><br><br><br><br><br><br><br><br><br>
-
-        <div class="sociallinks">
-            <ul>
-
-                <li class="specialborder1"><a class="expandlink" href="https://tr.ee/uFIH4djHiB">🎧 Listen to our Debut
-                        Album</a></li>
-
+                <!-- Navigation links with data attributes for background images -->
+                <li><a href="#home" data-bg="img/bg-home.jpg">About</a></li>
+                <li><a href="#media" data-bg="img/bg-media.jpg">Media</a></li>
+                <li><a href="#shows" data-bg="img/bg-shows.jpg">Shows</a></li>
+                <li><a href="#merch" tdata-bg="img/bg-merch.jpg">Merch</a></li>
+                <li><a href="#contact" data-bg="img/bg-contact.jpg">Contact</a></li>
 
             </ul>
-        </div>
 
-        <div class="sociallinks">
-            <ul>
-                <li><a class="expandlink" href="https://kangarookourt.shop">💅 Shop Merch</a></li>
-                <li><a class="expandlink" href="https://www.instagram.com/kangarookourtmusic/">📸 Instagram</a></li>
-                <li><a class="expandlink" href="https://www.youtube.com/@kangarookourtband">🎬 YouTube</a></li>
-
-            </ul>
-        </div>
-
-        <br> <br> <br>
-
-        <iframe style="border-radius:12px; padding: 20px; width: calc(100vw - 40px);"
-            src="https://open.spotify.com/embed/album/5My8FKuCwxG7BdygN5h03y?utm_source=generator&theme=0" height="352"
-            frameBorder="0" allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-        <iframe class="youtubevideo" src="https://www.youtube.com/embed/8vk2leBir24?si=Fm3ddOcpJeWsReTW"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-
-        <iframe class="youtubevideo" src="https://www.youtube.com/embed/dvT5deazsZ4?si=UY_EayEnmnnMS4uR"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-
-        <iframe class="youtubevideo" src="https://www.youtube.com/embed/5bA2OgCiuYc?si=zEfzAP-C2RKtO4-W"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+        </nav>
 
 
-        <h1 class="title">About Us</h1>
-        <p class="bio">The story began in the 1990s when five friends with a shared passion for music decided to create
-            a band that would push the boundaries of rock and soul. Tyler, a virtuoso on the bass guitar, provided the
-            band's rock-solid foundation. Carson, with his electrifying guitar skills, added the searing riffs and
-            soulful melodies that would become Kangaroo Kourt's signature sound. Mikey's dynamic drumming brought an
-            irresistible groove, while Tate's powerful vocals and charismatic stage presence elevated the band to a
-            whole new level. Ben, the keyboard maestro, contributed lush textures and soulful harmonies that completed
-            the ensemble.
-        </p>
+        <h1>Kangaroo Kourt</h1>
+    </header>
 
-        <p class="bio">Kangaroo Kourt spent countless hours honing their craft, drawing inspiration from the rich
-            musical history of Indiana and beyond. They seamlessly blended the raw energy of rock with the emotional
-            depth of soul, creating a sound that was uniquely their own. Their lyrics were introspective and
-            thought-provoking, touching on themes of love, loss, and the human experience.
-        </p>
+    <!-- Main content area -->
+    <main id="content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
 
-        <p class="bio">After years of playing in local venues and building a dedicated fan base (styled "The Joeys"),
-            Kangaroo Kourt's breakthrough came with their debut album, “Sunday Best,” released in 2023 to critical
-            acclaim and a decisive “fresh” from Rotten Tomatoes. The album featured hits like “Kiss The Water” and
-            “Think Of Me High,” which catapulted them into the national spotlight. Their electrifying live performances
-            became legendary, drawing fans from all over the country to witness the magic of Kangaroo Kourt.
-        </p>
+    <!-- Footer section -->
+    <footer>
+        &copy; 2024 Kangaroo Kourt. All rights reserved.
+    </footer>
 
-        <p class="bio">As with any journey, Kangaroo Kourt faced their fair share of challenges. They navigated the
-            highs and lows of the music industry, weathered personal hardships, and continued to evolve their sound.
-            Through it all, their unwavering passion for music and their strong bond as friends and collaborators kept
-            them going.
-        </p>
+    <!-- Modal for displaying images -->
+    <div id="myModal" class="modal">
+        <!-- Close button for the modal -->
+        <span class="close">&times;</span>
+        <!-- Navigation arrows for the modal -->
+        <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+        <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+        <!-- Modal content image -->
+        <img class="modal-content" id="img01">
+    </div>
 
-        <p class="bio">Kangaroo Kourt's legacy extends far beyond their music. They not only made a significant impact
-            on the music scene but also became philanthropists, using their success to give back to their Fort Wayne
-            community through music education programs and charitable initiatives.
-        </p>
+    <script>
+        let currentIndex = 0;
+        let images = [];
 
-        <p class="bio">In the end, Kangaroo Kourt's journey is a testament to the transformative power of music and the
-            unbreakable bonds forged through a shared love of rhythm, melody, and soul. From the heartland of Fort Wayne
-            to stages around the world, they rocked the soul of a generation and left an indelible mark on the pages of
-            music history.
-        </p>
+        // Load content dynamically based on page and background image
+        function loadContent(page, bg) {
+            const content = document.getElementById('content');
+            const backgroundImage = document.getElementById('backgroundImage');
+            switch (page) {
+                case 'home':
+                    content.innerHTML = `
+                    <div class="space"></div>
+                    
+    <div class="social-buttons">
+        <a href="https://www.instagram.com/kangarookourtmusic" class="instagram" title="Instagram" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30" height="30">
+        </a>
+        <a href="https://www.youtube.com/@kangarookourtband" class="youtube" title="YouTube" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="30" height="30">
+        </a>
+        <a href="https://www.tiktok.com/@kangarookourt" class="tiktok" title="TikTok" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" width="30" height="30">
+        </a>
+        <a href="https://www.facebook.com/p/Kangaroo-Kourt-100075354200571/" class="facebook" title="Facebook" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30" height="30">
+        </a>
+        <a href="https://open.spotify.com/album/5My8FKuCwxG7BdygN5h03y" class="spotify" title="Spotify" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify" width="30" height="30">
+        </a>
+       <a href="https://geo.music.apple.com/us/album/_/1722713681" class="apple-music" title="Apple Music" target="_blank">
+            <img src="icons/applemusic256.png" alt="Apple Music" width="30" height="30">
+        </a>
 
-        <p class="bio" style="text-align: center"> 🎸🦘</p>
 
-        <p class="bio"> </p>
-        <p class="bio"> </p>
-        <p class="bio"> </p>
-        <p class="bio"> </p>
-
-
-
-        <footer>
-            <p class="footer">&copy 2024 Kangaroo Kourt</p>
-        </footer>
 
     </div>
+        <h2>About Us</h2>
+
+            <p>
+                Kangaroo Kourt is an electrifying alt-rock/funk band that melds the timeless allure of Fleetwood Mac with the funk-driven energy of Funkadelic. Based in Fort Wayne, Indiana, this five-piece ensemble features a dynamic lineup of vocals, keyboard, guitar, bass, and drums, creating a sound that is both deeply rooted in the 70s and infused with modern energy. Known for their phenomenal vocals and ripping guitar solos, Kangaroo Kourt’s tight and driving rhythm section lays down a solid foundation that allows their music to soar. Their stage presence and musical exploration make them a sensational group, captivating audiences with every performance.
+            </p>
+
+            <a class="email" href="mailto:kangarookourtband@gmail.com">Contact us for booking 🦘</a>
+
+<br><br><br><br>
+
+
+            <iframe style="border-radius:12px; ;"src="https://open.spotify.com/embed/album/5My8FKuCwxG7BdygN5h03y?utm_source=generator&theme=0" height="525"frameBorder="0" allowfullscreen=""allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            
+                    `;
+                    break;
+                case 'media':
+                    content.innerHTML = `
+                    <h2>Photos</h2>
+                        <div class="gallery">
+                            <!-- Images in the gallery with onclick events to open the modal -->
+                            <img src="img/photo1.jpg" alt="Photo 1" onclick="openModal(this, 0)">
+                            <img src="img/photo2.jpg" alt="Photo 2" onclick="openModal(this, 1)">
+                            <img src="img/photo3.jpg" alt="Photo 3" onclick="openModal(this, 2)">
+                            <img src="img/photo4.jpg" alt="Photo 4" onclick="openModal(this, 3)">
+                            <img src="img/photo5.jpg" alt="Photo 5" onclick="openModal(this, 4)">
+                            <img src="img/photo6.jpg" alt="Photo 6" onclick="openModal(this, 5)">
+                            <img src="img/photo7.jpg" alt="Photo 7" onclick="openModal(this, 6)">
+                            <img src="img/photo8.jpg" alt="Photo 8" onclick="openModal(this, 7)">
+                            <img src="img/photo9.jpg" alt="Photo 9" onclick="openModal(this, 8)">
+                            <img src="img/photo10.jpg" alt="Photo 10" onclick="openModal(this, 9)">
+                            <img src="img/photo11.jpg" alt="Photo 11" onclick="openModal(this, 10)">
+                            <img src="img/photo12.jpg" alt="Photo 12" onclick="openModal(this, 11)">
+                            <img src="img/photo13.jpg" alt="Photo 13" onclick="openModal(this, 12)">
+                            <img src="img/photo14.jpg" alt="Photo 14" onclick="openModal(this, 13)">
+                            <img src="img/photo15.jpg" alt="Photo 15" onclick="openModal(this, 14)">
+                            <img src="img/photo16.jpg" alt="Photo 16" onclick="openModal(this, 15)">
+                            <img src="img/photo17.jpg" alt="Photo 17" onclick="openModal(this, 16)">
+                            <img src="img/photo18.jpg" alt="Photo 18" onclick="openModal(this, 17)">                            
+
+
+
+
+                            <!-- Add more photos as needed -->
+                        </div>
+
+                    <br><br><br><br>
+
+                    <h2>Videos</h2>
+
+                        <iframe class="youtubevideo" src="https://www.youtube.com/embed/8vk2leBir24?si=W-e0uCoqdo2GziR7"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+                        <iframe class="youtubevideo" src="https://www.youtube.com/embed/dvT5deazsZ4?si=UY_EayEnmnnMS4uR"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+                        <iframe class="youtubevideo" src="https://www.youtube.com/embed/5bA2OgCiuYc?si=zEfzAP-C2RKtO4-W"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+
+                        <br><br><br><br>
+
+                    <h2>Music</h2>
+                        <iframe style="border-radius:12px; ;"src="https://open.spotify.com/embed/album/5My8FKuCwxG7BdygN5h03y?utm_source=generator&theme=0" height="525"frameBorder="0" allowfullscreen=""allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                        <br><br>
+
+                        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/sunday-best/1722713681"></iframe>
+
+
+
+
+                        <div class="space"></div>
+                    `;
+                    images = Array.from(document.querySelectorAll('.gallery img')).map(img => img.src);
+                    break;
+                case 'shows':
+                    content.innerHTML = `<h2>Upcoming Shows</h2><p>Stay tuned for our upcoming performances!</p>
+                    
+                    <div class="space"></div><div class="space"></div>
+                    `;
+                    break;
+                case 'merch':
+                    content.innerHTML = `
+                   <div class="space"></div>
+                        <h2>Merch</h2>
+                        
+                        </div><a class=merchbutton href="https://www.kangarookourt.shop" target="_blank">Visit our store ✨</a></div>
+                    
+                    <div class="space"></div><div class="space"></div>
+                    `;
+                    break;
+                case 'contact':
+                    content.innerHTML = `<h2>Contact Us</h2><p>Get in touch with Kangaroo Kourt at </p><a class="email" href="mailto:kangarookourtband@gmail.com">kangarookourtband@gmail.com</a>
+                    
+                    <div class="space"></div><div class="space"></div>
+                    `;
+                    break;
+                default:
+                    content.innerHTML = '<h2>Page Not Found</h2>';
+            }
+            backgroundImage.style.backgroundImage = `url('${bg}')`;
+        }
+
+        // Update background images based on screen size
+        function updateBackgrounds() {
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => {
+                const page = link.getAttribute('href').substr(1);
+                const originalBg = `img/bg-${page}.jpg`;
+                const smallBg = `img/bg-${page}-small.jpg`;
+                if (window.innerWidth < 600) {
+                    link.setAttribute('data-bg', smallBg);
+                } else {
+                    link.setAttribute('data-bg', originalBg);
+                }
+            });
+        }
+
+        // Open the modal with the selected image
+        function openModal(img, index) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('img01');
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+            currentIndex = index;
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        // Show previous image in the modal
+        function prevImage() {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            document.getElementById('img01').src = images[currentIndex];
+        }
+
+        // Show next image in the modal
+        function nextImage() {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            document.getElementById('img01').src = images[currentIndex];
+        }
+
+        // Add event listeners for resizing and loading the page
+        window.addEventListener('resize', updateBackgrounds);
+        window.addEventListener('load', updateBackgrounds);
+
+        // Event listeners for navigation links to load content dynamically
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = e.target.getAttribute('href').substr(1);
+                const bg = e.target.getAttribute('data-bg');
+                loadContent(page, bg);
+            });
+        });
+
+        // Load home page content by default
+        if (window.innerWidth < 600) {
+            loadContent('home', 'img/bg-home-small.jpg');
+        } else {
+            loadContent('home', 'img/bg-home.jpg');
+        }
+
+        // Close the modal when clicking on the close button
+        document.querySelector('.close').addEventListener('click', closeModal);
+    </script>
 </body>
 
 </html>
